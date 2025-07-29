@@ -1,0 +1,47 @@
+b3:
+  mean: 0.0
+  std: 5.0
+
+beta00:
+  mean: 0.0
+  std: 100.
+
+beta12:
+  mean: 0.0
+  std: 100.
+
+beta22:
+  mean: 0.0
+  std: 100.
+
+beta24:
+  mean: 0.0
+  std: 100.
+
+beta34:
+  mean: 0.0
+  std: 100.
+
+s00:
+  mean: 1500.0
+  std: 500.
+
+s20:
+  mean: 0.0
+  std: 100000.
+
+s12:
+  mean: 0.0
+  std: 100000.
+
+s22:
+  mean: 0.0
+  std: 100000.
+
+beta_fog:
+  mean: 0.0
+  std: 1000.0
+
+s44:
+  mean: 0.0
+  std: 1000000.

@@ -1,0 +1,96 @@
+theory:
+  pairwise_velocity_likelihood_am_binned.PT_Theory:
+    plinfn: /pscratch/sd/s/sfschen/abacus_pvs/plins/abacus_pcb_z_1.1.txt
+    pnwfn: /pscratch/sd/s/sfschen/abacus_pvs/plins/abacus_pnw_z_1.1.txt
+    Dz: 1.0
+    kmax: 0.4
+    kmin: 0.001
+    nk: 400
+    #stop_at_error: True
+    
+likelihood:
+  pairwise_velocity_likelihood_am_binned.PairwiseVelocityLikelihood:
+    kdatfn: /pscratch/sd/s/sfschen/abacus_pvs/kbins_nc_256_Lbox_2000_dk_0.005.txt
+    datfn: /pscratch/sd/s/sfschen/abacus_pvs/pvs/AbacusSummit_base_c000_z1.100_12.5_13.0_xins_rsd_periodic_los_x.txt
+    covfn: /pscratch/sd/s/sfschen/abacus_pvs/pvs/AbacusSummit_base_c000_z1.100_12.5_13.0_xins_rsd_cov_gp.txt
+    diagonal_covariance: False
+
+    linear_param_dict_fn: /pscratch/sd/s/sfschen/abacus_pvs/velocity_eft/likelihood/paper_yamls/linear_params_z_1.1_logM_12.5_13.0.yaml
+    include_priors: True
+    optimize: False
+    
+    kmin: 0.035
+    p0max: 0.20
+    p2max: 0.15
+    p4max: 0.00
+    v1max: 0.20
+    v3max: 0.00
+    s0max: 0.0
+    s2max: 0.0
+    #stop_at_error: True
+    
+params:
+  fz:
+    prior:
+      dist: uniform
+      min:  0.0
+      max:  5.0
+    ref:
+      dist:  norm
+      loc:   0.889
+      scale: 0.01
+    #value: 0.889
+    latex: f(z)
+  b1:
+    prior:
+      dist: uniform
+      min:  0.0
+      max:  5.0
+    ref:
+      dist:  norm
+      loc:   2.05
+      scale: 0.05
+    latex: b_1
+  b2:
+    prior:
+      dist:  norm
+      loc:   0.0
+      scale: 10.
+    ref:
+      dist:  norm
+      loc:   -1.64
+      scale: 1.0
+    latex: b_2
+  bs:
+    prior:
+      dist:  norm
+      loc:   0.0
+      scale: 5.0
+    ref:
+      dist:  norm
+      loc:   0.586
+      scale: 1.0
+    latex: b_s
+
+  nonmarg_chi2:
+    latex: \chi^2_{nonmarg}
+
+    
+sampler:
+  mcmc:
+    #covmat: auto
+    learn_proposal: True
+    learn_proposal_Rminus1_max: 10.
+    learn_proposal_Rminus1_max_early: 10.
+    output_every: 60s
+    measure_speeds: false
+    max_tries: 10000
+    drag: False
+    oversample_power: 0.4
+    proposal_scale: 1.5
+    Rminus1_stop: 0.05
+#debug: True
+#stop_at_error: True    
+output: chains/fit_fz_ept_am_binned_z_1.1_logM_12.5_13.0_p02v1
+timing: True
+stop_on_error: True
